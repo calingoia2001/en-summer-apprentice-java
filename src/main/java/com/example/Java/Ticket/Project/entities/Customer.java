@@ -9,6 +9,7 @@ public class Customer {
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
     private Long customerID;
+
     @NotNull
     @Column ( name = "customerName" )
     private String customerName;
@@ -17,8 +18,7 @@ public class Customer {
     @Column ( unique = true )
     private String email;
 
-    public Customer() {
-    }
+    public Customer() {}
 
     public Customer(Long customerID, String customerName, String email) {
         this.customerID = customerID;
