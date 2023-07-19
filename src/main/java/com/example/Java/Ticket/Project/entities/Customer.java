@@ -7,13 +7,7 @@ import org.antlr.v4.runtime.misc.NotNull;
 @Table(name = "CUSTOMER")
 public class Customer {
     @Id
-    @SequenceGenerator(
-            name = "customer_sequence",
-            allocationSize = 1
-    )
-    @GeneratedValue(
-            generator = "customer_sequence"
-    )
+    @GeneratedValue(strategy= GenerationType.AUTO)
     private Long customerID;
     @NotNull
     @Column ( name = "customerName" )
