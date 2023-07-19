@@ -7,14 +7,20 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public class CustomerService {
+public class CustomerService implements iCustomerService {
     private final CustomerRepository customerRepository;
 
     public CustomerService(CustomerRepository customerRepository) {
         this.customerRepository = customerRepository;
     }
 
+    @Override
     public List<Customer> getCustomers() {
         return customerRepository.findAll();
+    }
+
+    @Override
+    public void createCustomer(Customer customer) {
+        customerRepository.save(customer);
     }
 }
