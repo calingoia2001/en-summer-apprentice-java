@@ -9,4 +9,6 @@ public interface iCustomerService {
     void createCustomer(Customer customer);
 
     void updateCustomer(Long customerID, Customer customer);
+
+    void deleteCustomer(Long customerID);
 }

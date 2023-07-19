@@ -32,4 +32,13 @@ public class CustomerService implements iCustomerService {
         customerToUpdate.setEmail(customer.getEmail());
         customerRepository.save(customerToUpdate);
     }
+
+    @Override
+    public void deleteCustomer(Long customerID) {
+        boolean customerExists = customerRepository.existsById(customerID);
+        if(!customerExists) {
+            throw new IllegalStateException(String.format("Employee with ID %s does not exist", customerID));
+        }
+        customerRepository.deleteById(customerID);
+    }
 }
