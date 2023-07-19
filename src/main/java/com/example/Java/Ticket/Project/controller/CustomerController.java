@@ -25,4 +25,9 @@ public class CustomerController {
     public void createCustomer(@RequestBody Customer customer) {
         customerService.createCustomer(customer);
     }
+
+    @PutMapping(path = "{customerID}")
+    public void updateCustomer(@PathVariable Long customerID,@RequestBody Customer customer) {
+        customerService.updateCustomer(customerID, customer);
+    }
 }
