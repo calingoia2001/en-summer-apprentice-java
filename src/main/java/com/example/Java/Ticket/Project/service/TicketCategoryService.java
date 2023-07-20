@@ -3,7 +3,6 @@ package com.example.Java.Ticket.Project.service;
 import com.example.Java.Ticket.Project.entities.TicketCategory;
 import com.example.Java.Ticket.Project.repository.TicketCategoryRepository;
 import org.springframework.stereotype.Service;
-
 import java.util.List;
 
 @Service

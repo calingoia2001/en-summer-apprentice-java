@@ -1,8 +1,6 @@
 package com.example.Java.Ticket.Project.entities;
 
 import jakarta.persistence.*;
-import org.antlr.v4.runtime.misc.NotNull;
-
 import java.io.Serializable;
 
 @Entity
@@ -12,12 +10,10 @@ public class EventType implements Serializable {
     @GeneratedValue(strategy= GenerationType.IDENTITY)
     private Long eventTypeID;
 
-
     @Column ( name = "eventTypeName" )
     private String eventTypeName;
 
     public EventType() {}
-
     public EventType(Long eventTypeID, String eventTypeName) {
         this.eventTypeID = eventTypeID;
         this.eventTypeName = eventTypeName;

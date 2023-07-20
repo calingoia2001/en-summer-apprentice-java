@@ -1,7 +1,6 @@
 package com.example.Java.Ticket.Project.entities;
 
 import jakarta.persistence.*;
-
 import java.io.Serializable;
 import java.util.Date;
 
@@ -32,10 +31,7 @@ public class Event implements Serializable {
     @Column ( name = "endDate" )
     private Date endDate;
 
-
-
     public Event() {}
-
     public Event(Long eventID, Venue venue, EventType eventType, String eventDescription, String eventName, Date startDate, Date endDate) {
         this.eventID = eventID;
         this.venue = venue;
@@ -46,61 +42,26 @@ public class Event implements Serializable {
         this.endDate = endDate;
     }
 
-    public Long getEventID() {
-        return eventID;
-    }
+    public Long getEventID() { return eventID; }
+    public void setEventID(Long eventID) { this.eventID = eventID; }
 
-    public void setEventID(Long eventID) {
-        this.eventID = eventID;
-    }
+    public Venue getVenue() { return venue; }
+    public void setVenue(Venue venue) { this.venue = venue; }
 
-    public Venue getVenue() {
-        return venue;
-    }
+    public EventType getEventType() { return eventType;}
+    public void setEventType(EventType eventType) { this.eventType = eventType; }
 
-    public void setVenueID(Venue venue) {
-        this.venue = venue;
-    }
+    public String getEventDescription() { return eventDescription; }
+    public void setEventDescription(String eventDescription) { this.eventDescription = eventDescription; }
 
-    public EventType getEventType() {
-        return eventType;
-    }
+    public String getEventName() { return eventName;}
+    public void setEventName(String eventName) { this.eventName = eventName; }
 
-    public void setEventType(EventType eventType) {
-        this.eventType = eventType;
-    }
+    public Date getStartDate() { return startDate; }
+    public void setStartDate(Date startDate) { this.startDate = startDate; }
 
-    public String getEventDescription() {
-        return eventDescription;
-    }
-
-    public void setEventDescription(String eventDescription) {
-        this.eventDescription = eventDescription;
-    }
-
-    public String getEventName() {
-        return eventName;
-    }
-
-    public void setEventName(String eventName) {
-        this.eventName = eventName;
-    }
-
-    public Date getStartDate() {
-        return startDate;
-    }
-
-    public void setStartDate(Date startDate) {
-        this.startDate = startDate;
-    }
-
-    public Date getEndDate() {
-        return endDate;
-    }
-
-    public void setEndDate(Date endDate) {
-        this.endDate = endDate;
-    }
+    public Date getEndDate() { return endDate; }
+    public void setEndDate(Date endDate) { this.endDate = endDate; }
 
     @Override
     public String toString() {

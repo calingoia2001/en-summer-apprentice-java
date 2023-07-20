@@ -1,7 +1,6 @@
 package com.example.Java.Ticket.Project.entities;
 
 import jakarta.persistence.*;
-
 import java.io.Serializable;
 
 @Entity
@@ -12,8 +11,8 @@ public class TicketCategory implements Serializable {
     private Long ticketCategoryID;
 
     @ManyToOne
-    @JoinColumn(name = "eventID", referencedColumnName = "eventID")
-    private Event eventID;
+    @JoinColumn(name = "eventID")
+    private Event event;
 
     @Column ( name = "description" )
     private String description;
@@ -22,10 +21,9 @@ public class TicketCategory implements Serializable {
     private int price;
 
     public TicketCategory() {}
-
-    public TicketCategory(Long ticketCategoryID, Event eventID, String description, int price) {
+    public TicketCategory(Long ticketCategoryID, Event event, String description, int price) {
         this.ticketCategoryID = ticketCategoryID;
-        this.eventID = eventID;
+        this.event = event;
         this.description = description;
         this.price = price;
     }
@@ -33,23 +31,20 @@ public class TicketCategory implements Serializable {
     public Long getTicketCategoryID() {
         return ticketCategoryID;
     }
-
     public void setTicketCategoryID(Long ticketCategoryID) {
         this.ticketCategoryID = ticketCategoryID;
     }
 
     public Event getEventID() {
-        return eventID;
+        return event;
     }
-
-    public void setEventID(Event eventID) {
-        this.eventID = eventID;
+    public void setEventID(Event event) {
+        this.event = event;
     }
 
     public String getDescription() {
         return description;
     }
-
     public void setDescription(String description) {
         this.description = description;
     }
@@ -57,7 +52,6 @@ public class TicketCategory implements Serializable {
     public int getPrice() {
         return price;
     }
-
     public void setPrice(int price) {
         this.price = price;
     }
@@ -66,7 +60,7 @@ public class TicketCategory implements Serializable {
     public String toString() {
         return "TicketCategory{" +
                 "ticketCategoryID=" + ticketCategoryID +
-                ", eventID=" + eventID +
+                ", event=" + event +
                 ", description='" + description + '\'' +
                 ", price=" + price +
                 '}';
