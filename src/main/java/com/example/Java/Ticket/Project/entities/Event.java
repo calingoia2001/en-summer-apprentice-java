@@ -14,11 +14,11 @@ public class Event implements Serializable {
 
     @ManyToOne
     @JoinColumn(name = "venueID")
-    private Venue venueID;
+    private Venue venue;
 
     @ManyToOne
     @JoinColumn(name = "eventTypeID")
-    private EventType eventTypeID;
+    private EventType eventType;
 
     @Column ( name = "eventDescription" )
     private String eventDescription;
@@ -32,12 +32,14 @@ public class Event implements Serializable {
     @Column ( name = "endDate" )
     private Date endDate;
 
+
+
     public Event() {}
 
-    public Event(Long eventID, Venue venueID, EventType eventTypeID, String eventDescription, String eventName, Date startDate, Date endDate) {
+    public Event(Long eventID, Venue venue, EventType eventType, String eventDescription, String eventName, Date startDate, Date endDate) {
         this.eventID = eventID;
-        this.venueID = venueID;
-        this.eventTypeID = eventTypeID;
+        this.venue = venue;
+        this.eventType = eventType;
         this.eventDescription = eventDescription;
         this.eventName = eventName;
         this.startDate = startDate;
@@ -52,20 +54,20 @@ public class Event implements Serializable {
         this.eventID = eventID;
     }
 
-    public Venue getVenueID() {
-        return venueID;
+    public Venue getVenue() {
+        return venue;
     }
 
-    public void setVenueID(Venue venueID) {
-        this.venueID = venueID;
+    public void setVenueID(Venue venue) {
+        this.venue = venue;
     }
 
-    public EventType getEventTypeID() {
-        return eventTypeID;
+    public EventType getEventType() {
+        return eventType;
     }
 
-    public void setEventTypeID(EventType eventTypeID) {
-        this.eventTypeID = eventTypeID;
+    public void setEventType(EventType eventType) {
+        this.eventType = eventType;
     }
 
     public String getEventDescription() {
@@ -104,8 +106,8 @@ public class Event implements Serializable {
     public String toString() {
         return "Event{" +
                 "eventID=" + eventID +
-                ", venueID=" + venueID +
-                ", eventTypeID=" + eventTypeID +
+                ", venue=" + venue +
+                ", eventType=" + eventType +
                 ", eventDescription='" + eventDescription + '\'' +
                 ", eventName='" + eventName + '\'' +
                 ", startDate=" + startDate +

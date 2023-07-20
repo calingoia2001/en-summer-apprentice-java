@@ -13,12 +13,12 @@ public class Orders implements Serializable {
     private Long orderID;
 
     @ManyToOne
-    @JoinColumn(name = "ticketCategoryID", referencedColumnName = "ticketCategoryID")
-    private TicketCategory ticketCategoryID;
+    @JoinColumn(name = "ticketCategoryID")
+    private TicketCategory ticketCategory;
 
     @ManyToOne
-    @JoinColumn(name = "customerID", referencedColumnName = "customerID")
-    private Customer customerID;
+    @JoinColumn(name = "customerID")
+    private Customer customer;
 
     @Column ( name = "orderedAt" )
     private Date orderedAt;
@@ -33,8 +33,8 @@ public class Orders implements Serializable {
     public String toString() {
         return "Orders{" +
                 "orderID=" + orderID +
-                ", ticketCategoryID=" + ticketCategoryID +
-                ", customerID=" + customerID +
+                ", ticketCategory=" + ticketCategory +
+                ", customer=" + customer +
                 ", orderedAt=" + orderedAt +
                 ", numberOfTickets=" + numberOfTickets +
                 ", totalPrice=" + totalPrice +
@@ -49,20 +49,20 @@ public class Orders implements Serializable {
         this.orderID = orderID;
     }
 
-    public TicketCategory getTicketCategoryID() {
-        return ticketCategoryID;
+    public TicketCategory getTicketCategory() {
+        return ticketCategory;
     }
 
-    public void setTicketCategoryID(TicketCategory ticketCategoryID) {
-        this.ticketCategoryID = ticketCategoryID;
+    public void setTicketCategory(TicketCategory ticketCategory) {
+        this.ticketCategory = ticketCategory;
     }
 
-    public Customer getCustomerID() {
-        return customerID;
+    public Customer getCustomer() {
+        return customer;
     }
 
-    public void setCustomerID(Customer customerID) {
-        this.customerID = customerID;
+    public void setCustomerID(Customer customer) {
+        this.customer = customer;
     }
 
     public Date getOrderedAt() {
