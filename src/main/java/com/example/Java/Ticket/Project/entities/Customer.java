@@ -7,7 +7,7 @@ import org.antlr.v4.runtime.misc.NotNull;
 @Table(name = "CUSTOMER")
 public class Customer {
     @Id
-    @GeneratedValue(strategy= GenerationType.IDENTITY)
+    @GeneratedValue(strategy= GenerationType.SEQUENCE)
     private Long customerID;
 
     @NotNull
