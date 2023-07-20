@@ -7,7 +7,7 @@ import org.antlr.v4.runtime.misc.NotNull;
 @Table(name = "VENUE")
 public class Venue {
     @Id
-    @GeneratedValue(strategy= GenerationType.AUTO)
+    @GeneratedValue(strategy= GenerationType.IDENTITY)
     private Long venueID;
 
     @NotNull
