@@ -8,7 +8,7 @@ import java.util.Date;
 @Table(name = "ORDERS")
 public class Orders {
     @Id
-    @GeneratedValue(strategy= GenerationType.IDENTITY)
+    @GeneratedValue(strategy= GenerationType.SEQUENCE)
     private Long orderID;
 
     @ManyToOne

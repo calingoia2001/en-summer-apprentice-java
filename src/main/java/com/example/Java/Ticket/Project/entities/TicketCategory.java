@@ -6,7 +6,7 @@ import jakarta.persistence.*;
 @Table(name = "TICKET_CATEGORY")
 public class TicketCategory {
     @Id
-    @GeneratedValue(strategy= GenerationType.IDENTITY)
+    @GeneratedValue(strategy= GenerationType.SEQUENCE)
     private Long ticketCategoryID;
 
     @ManyToOne
