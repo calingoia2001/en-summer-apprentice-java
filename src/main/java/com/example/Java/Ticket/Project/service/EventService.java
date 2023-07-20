@@ -22,4 +22,5 @@ public class EventService implements iEventService {
     public void createEvent(Event event) {
         eventRepository.save(event);
     }
+
 }

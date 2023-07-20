@@ -2,21 +2,22 @@ package com.example.Java.Ticket.Project.entities;
 
 import jakarta.persistence.*;
 
+import java.io.Serializable;
 import java.util.Date;
 
 @Entity
 @Table(name = "EVENT")
-public class Event {
+public class Event implements Serializable {
     @Id
-    @GeneratedValue(strategy= GenerationType.SEQUENCE)
+    @GeneratedValue(strategy= GenerationType.IDENTITY)
     private Long eventID;
 
     @ManyToOne
-    @JoinColumn(name = "venueID", referencedColumnName = "venueID")
+    @JoinColumn(name = "venueID")
     private Venue venueID;
 
     @ManyToOne
-    @JoinColumn(name = "eventTypeID", referencedColumnName = "eventTypeID")
+    @JoinColumn(name = "eventTypeID")
     private EventType eventTypeID;
 
     @Column ( name = "eventDescription" )
@@ -43,6 +44,73 @@ public class Event {
         this.endDate = endDate;
     }
 
+    public Long getEventID() {
+        return eventID;
+    }
 
+    public void setEventID(Long eventID) {
+        this.eventID = eventID;
+    }
+
+    public Venue getVenueID() {
+        return venueID;
+    }
+
+    public void setVenueID(Venue venueID) {
+        this.venueID = venueID;
+    }
+
+    public EventType getEventTypeID() {
+        return eventTypeID;
+    }
+
+    public void setEventTypeID(EventType eventTypeID) {
+        this.eventTypeID = eventTypeID;
+    }
+
+    public String getEventDescription() {
+        return eventDescription;
+    }
+
+    public void setEventDescription(String eventDescription) {
+        this.eventDescription = eventDescription;
+    }
+
+    public String getEventName() {
+        return eventName;
+    }
+
+    public void setEventName(String eventName) {
+        this.eventName = eventName;
+    }
+
+    public Date getStartDate() {
+        return startDate;
+    }
+
+    public void setStartDate(Date startDate) {
+        this.startDate = startDate;
+    }
+
+    public Date getEndDate() {
+        return endDate;
+    }
+
+    public void setEndDate(Date endDate) {
+        this.endDate = endDate;
+    }
+
+    @Override
+    public String toString() {
+        return "Event{" +
+                "eventID=" + eventID +
+                ", venueID=" + venueID +
+                ", eventTypeID=" + eventTypeID +
+                ", eventDescription='" + eventDescription + '\'' +
+                ", eventName='" + eventName + '\'' +
+                ", startDate=" + startDate +
+                ", endDate=" + endDate +
+                '}';
+    }
 }
 

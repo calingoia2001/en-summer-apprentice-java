@@ -2,11 +2,13 @@ package com.example.Java.Ticket.Project.entities;
 
 import jakarta.persistence.*;
 
+import java.io.Serializable;
+
 @Entity
 @Table(name = "TICKET_CATEGORY")
-public class TicketCategory {
+public class TicketCategory implements Serializable {
     @Id
-    @GeneratedValue(strategy= GenerationType.SEQUENCE)
+    @GeneratedValue(strategy= GenerationType.IDENTITY)
     private Long ticketCategoryID;
 
     @ManyToOne
@@ -58,5 +60,15 @@ public class TicketCategory {
 
     public void setPrice(int price) {
         this.price = price;
+    }
+
+    @Override
+    public String toString() {
+        return "TicketCategory{" +
+                "ticketCategoryID=" + ticketCategoryID +
+                ", eventID=" + eventID +
+                ", description='" + description + '\'' +
+                ", price=" + price +
+                '}';
     }
 }

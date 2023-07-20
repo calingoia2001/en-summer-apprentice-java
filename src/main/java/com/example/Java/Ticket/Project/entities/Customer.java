@@ -3,18 +3,20 @@ package com.example.Java.Ticket.Project.entities;
 import jakarta.persistence.*;
 import org.antlr.v4.runtime.misc.NotNull;
 
+import java.io.Serializable;
+
 @Entity
 @Table(name = "CUSTOMER")
-public class Customer {
+public class Customer implements Serializable {
     @Id
-    @GeneratedValue(strategy= GenerationType.SEQUENCE)
+    @GeneratedValue(strategy= GenerationType.IDENTITY)
     private Long customerID;
 
-    @NotNull
+
     @Column ( name = "customerName" )
     private String customerName;
 
-    @NotNull
+
     @Column ( unique = true )
     private String email;
 
@@ -48,5 +50,14 @@ public class Customer {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    @Override
+    public String toString() {
+        return "Customer{" +
+                "customerID=" + customerID +
+                ", customerName='" + customerName + '\'' +
+                ", email='" + email + '\'' +
+                '}';
     }
 }
