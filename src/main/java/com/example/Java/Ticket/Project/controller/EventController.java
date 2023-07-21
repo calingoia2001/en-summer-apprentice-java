@@ -13,7 +13,7 @@ public class EventController {
         this.eventService = eventService;
     }
 
-    @GetMapping
+    @GetMapping()
     public List<Event> getEvent() {
         return eventService.getEvent();
     }
