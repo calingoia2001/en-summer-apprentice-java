@@ -32,16 +32,6 @@ public class OrdersService implements iOrdersService{
         )).collect(Collectors.toList());
     }
 
-    private TicketCategoryDTO convertToTicketCategoryDTO(TicketCategory ticketCategory) {
-        if (ticketCategory == null) {
-            return null;
-        }
-        return new TicketCategoryDTO(
-                ticketCategory.getTicketCategoryID()
-        );
-    }
-
-
     @Override
     public void createOrders(Orders orders) {
         ordersRepository.save(orders);

@@ -25,8 +25,8 @@ public class EventService implements iEventService {
                 event.getEventDescription(),
                 event.getEventName(),
                 event.getStartDate(),
-                event.getEndDate()
-                //convertToTicketCategoryDTOList()
+                event.getEndDate(),
+                convertToTicketCategoryDTOList(event.getTicketCategories())
         )).collect(Collectors.toList());
     }
 
@@ -42,7 +42,7 @@ public class EventService implements iEventService {
         );
     }
 
-    /*
+
     private List<TicketCategoryDTO> convertToTicketCategoryDTOList(List<TicketCategory> ticketCategories) {
         return ticketCategories.stream()
                 .map(ticketCategory -> new TicketCategoryDTO(
@@ -51,7 +51,7 @@ public class EventService implements iEventService {
                         ticketCategory.getPrice()
                 ))
                 .collect(Collectors.toList());
-    }*/
+    }
 
     @Override
     public void createEvent(Event event) {

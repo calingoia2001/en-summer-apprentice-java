@@ -2,7 +2,9 @@ package com.example.Java.Ticket.Project.entities;
 
 import jakarta.persistence.*;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Table(name = "EVENT")
@@ -14,6 +16,9 @@ public class Event implements Serializable {
     @ManyToOne
     @JoinColumn(name = "venueID")
     private Venue venue;
+
+    @OneToMany(mappedBy = "event", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<TicketCategory> ticketCategories = new ArrayList<>();
 
     @ManyToOne
     @JoinColumn(name = "eventTypeID")
@@ -40,6 +45,14 @@ public class Event implements Serializable {
         this.eventName = eventName;
         this.startDate = startDate;
         this.endDate = endDate;
+    }
+
+    public List<TicketCategory> getTicketCategories() {
+        return ticketCategories;
+    }
+
+    public void setTicketCategories(List<TicketCategory> ticketCategories) {
+        this.ticketCategories = ticketCategories;
     }
 
     public Long getEventID() { return eventID; }
