@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping(path = "/api/v1/ticketcategory")
+@RequestMapping(path = "/api/v1/ticketcategories")
 public class TicketCategoryController {
     private final TicketCategoryService ticketCategoryService;
     public TicketCategoryController(TicketCategoryService ticketCategoryService) {

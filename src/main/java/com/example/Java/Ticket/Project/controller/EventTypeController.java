@@ -9,6 +9,7 @@ import java.util.List;
 @RequestMapping(path = "/api/v1/eventTypes")
 public class EventTypeController {
     private final EventTypeService eventTypeService;
+
     public EventTypeController(EventTypeService eventTypeService) {
         this.eventTypeService = eventTypeService;
     }
