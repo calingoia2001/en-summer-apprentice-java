@@ -9,11 +9,12 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import java.io.Serializable;
-import java.util.Date;
+import java.time.LocalDate;
+import java.util.Objects;
 
 @Entity
 @Table(name = "ORDERS")
-public class Orders implements Serializable {
+public class Order implements Serializable {
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
     private Long orderID;
@@ -27,7 +28,7 @@ public class Orders implements Serializable {
     private Customer customer;
 
     @Column ( name = "orderedAt" )
-    private Date orderedAt;
+    private LocalDate orderedAt;
 
     @Column ( name = "numberOfTickets" )
     private int numberOfTickets;
@@ -57,10 +58,10 @@ public class Orders implements Serializable {
         this.customer = customer;
     }
 
-    public Date getOrderedAt() {
+    public LocalDate getOrderedAt() {
         return orderedAt;
     }
-    public void setOrderedAt(Date orderedAt) { this.orderedAt = orderedAt; }
+    public void setOrderedAt(LocalDate orderedAt) { this.orderedAt = orderedAt; }
 
     public int getNumberOfTickets() {
         return numberOfTickets;
@@ -86,5 +87,18 @@ public class Orders implements Serializable {
                 ", numberOfTickets=" + numberOfTickets +
                 ", totalPrice=" + totalPrice +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Order order = (Order) o;
+        return numberOfTickets == order.numberOfTickets && totalPrice == order.totalPrice && Objects.equals(orderID, order.orderID) && Objects.equals(ticketCategory, order.ticketCategory) && Objects.equals(customer, order.customer) && Objects.equals(orderedAt, order.orderedAt);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(orderID, ticketCategory, customer, orderedAt, numberOfTickets, totalPrice);
     }
 }

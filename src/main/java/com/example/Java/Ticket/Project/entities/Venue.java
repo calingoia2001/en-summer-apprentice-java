@@ -7,6 +7,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import java.io.Serializable;
+import java.util.Objects;
 
 @Entity
 @Table(name = "VENUE")
@@ -68,5 +69,18 @@ public class Venue implements Serializable {
                 ", locationType='" + locationType + '\'' +
                 ", capacity=" + capacity +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Venue venue = (Venue) o;
+        return capacity == venue.capacity && Objects.equals(venueID, venue.venueID) && Objects.equals(locationName, venue.locationName) && Objects.equals(locationType, venue.locationType);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(venueID, locationName, locationType, capacity);
     }
 }

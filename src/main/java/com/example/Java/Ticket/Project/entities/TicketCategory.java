@@ -9,6 +9,7 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import java.io.Serializable;
+import java.util.Objects;
 
 @Entity
 @Table(name = "TICKET_CATEGORY")
@@ -71,5 +72,18 @@ public class TicketCategory implements Serializable {
                 ", description='" + description + '\'' +
                 ", price=" + price +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        TicketCategory that = (TicketCategory) o;
+        return price == that.price && Objects.equals(ticketCategoryID, that.ticketCategoryID) && Objects.equals(event, that.event) && Objects.equals(description, that.description);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(ticketCategoryID, event, description, price);
     }
 }

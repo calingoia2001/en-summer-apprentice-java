@@ -11,9 +11,10 @@ import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import java.io.Serializable;
+import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
+import java.util.Objects;
 
 @Entity
 @Table(name = "EVENT")
@@ -40,13 +41,13 @@ public class Event implements Serializable {
     private String eventName;
 
     @Column ( name = "startDate" )
-    private Date startDate;
+    private LocalDate startDate;
 
     @Column ( name = "endDate" )
-    private Date endDate;
+    private LocalDate endDate;
 
     public Event() {}
-    public Event(Long eventID, Venue venue, EventType eventType, String eventDescription, String eventName, Date startDate, Date endDate) {
+    public Event(Long eventID, Venue venue, EventType eventType, String eventDescription, String eventName, LocalDate startDate, LocalDate endDate) {
         this.eventID = eventID;
         this.venue = venue;
         this.eventType = eventType;
@@ -79,11 +80,11 @@ public class Event implements Serializable {
     public String getEventName() { return eventName;}
     public void setEventName(String eventName) { this.eventName = eventName; }
 
-    public Date getStartDate() { return startDate; }
-    public void setStartDate(Date startDate) { this.startDate = startDate; }
+    public LocalDate getStartDate() { return startDate; }
+    public void setStartDate(LocalDate startDate) { this.startDate = startDate; }
 
-    public Date getEndDate() { return endDate; }
-    public void setEndDate(Date endDate) { this.endDate = endDate; }
+    public LocalDate getEndDate() { return endDate; }
+    public void setEndDate(LocalDate endDate) { this.endDate = endDate; }
 
     @Override
     public String toString() {
@@ -96,6 +97,19 @@ public class Event implements Serializable {
                 ", startDate=" + startDate +
                 ", endDate=" + endDate +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Event event = (Event) o;
+        return Objects.equals(eventID, event.eventID) && Objects.equals(venue, event.venue) && Objects.equals(ticketCategories, event.ticketCategories) && Objects.equals(eventType, event.eventType) && Objects.equals(eventDescription, event.eventDescription) && Objects.equals(eventName, event.eventName) && Objects.equals(startDate, event.startDate) && Objects.equals(endDate, event.endDate);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(eventID, venue, ticketCategories, eventType, eventDescription, eventName, startDate, endDate);
     }
 }
 

@@ -7,6 +7,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import java.io.Serializable;
+import java.util.Objects;
 
 @Entity
 @Table(name = "EVENT_TYPE")
@@ -46,5 +47,18 @@ public class EventType implements Serializable {
                 "eventTypeID=" + eventTypeID +
                 ", eventTypeName='" + eventTypeName + '\'' +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        EventType eventType = (EventType) o;
+        return Objects.equals(eventTypeID, eventType.eventTypeID) && Objects.equals(eventTypeName, eventType.eventTypeName);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(eventTypeID, eventTypeName);
     }
 }
