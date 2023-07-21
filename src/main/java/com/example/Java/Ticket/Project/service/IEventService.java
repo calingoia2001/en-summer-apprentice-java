@@ -5,7 +5,7 @@ import com.example.Java.Ticket.Project.entities.dtos.EventDTO;
 
 import java.util.List;
 
-public interface iEventService {
-    List<EventDTO> getEvent();
+public interface IEventService {
+    List<EventDTO> getEvents();
     void createEvent(Event event);
 }

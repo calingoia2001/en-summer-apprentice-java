@@ -8,7 +8,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @Service
-public class VenueService implements iVenueService {
+public class VenueService implements IVenueService {
     private final VenueRepository venueRepository;
 
     public VenueService(VenueRepository venueRepository) {

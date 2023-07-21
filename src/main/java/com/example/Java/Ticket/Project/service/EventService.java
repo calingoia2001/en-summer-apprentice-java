@@ -10,12 +10,12 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @Service
-public class EventService implements iEventService {
+public class EventService implements IEventService {
     private final EventRepository eventRepository;
     public EventService(EventRepository eventRepository) { this.eventRepository = eventRepository; }
 
     @Override
-    public List<EventDTO> getEvent() {
+    public List<EventDTO> getEvents() {
         return eventRepository.findAll().stream().map(event -> new EventDTO(
                 event.getEventID(),
                 event.getVenue().getVenueID(),   // convertToVenueDTO(event.getVenue()),

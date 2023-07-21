@@ -8,7 +8,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @Service
-public class OrderService implements iOrderService {
+public class OrderService implements IOrderService {
     private final OrderRepository orderRepository;
     public OrderService(OrderRepository orderRepository) {
         this.orderRepository = orderRepository;

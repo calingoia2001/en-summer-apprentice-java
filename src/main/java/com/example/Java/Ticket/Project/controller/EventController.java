@@ -15,8 +15,8 @@ public class EventController {
     }
 
     @GetMapping()
-    public List<EventDTO> getEvent() {
-        return eventService.getEvent();
+    public List<EventDTO> getEvents() {
+        return eventService.getEvents();
     }
 
     @PostMapping

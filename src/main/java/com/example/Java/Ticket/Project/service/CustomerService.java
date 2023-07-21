@@ -6,7 +6,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public class CustomerService implements iCustomerService {
+public class CustomerService implements ICustomerService {
     private final CustomerRepository customerRepository;
     public CustomerService(CustomerRepository customerRepository) {
         this.customerRepository = customerRepository;

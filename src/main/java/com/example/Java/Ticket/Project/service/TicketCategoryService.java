@@ -6,7 +6,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public class TicketCategoryService implements iTicketCategoryService{
+public class TicketCategoryService implements ITicketCategoryService {
     private final TicketCategoryRepository ticketCategoryRepository;
 
     public TicketCategoryService(TicketCategoryRepository ticketCategoryRepository) {
