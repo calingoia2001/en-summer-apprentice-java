@@ -1,10 +1,12 @@
 package com.example.Java.Ticket.Project.service;
 
 import com.example.Java.Ticket.Project.entities.Venue;
+import com.example.Java.Ticket.Project.entities.dtos.VenueDTO;
 import com.example.Java.Ticket.Project.repository.VenueRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class VenueService implements iVenueService {
@@ -15,8 +17,11 @@ public class VenueService implements iVenueService {
     }
 
     @Override
-    public List<Venue> getVenue() {
-        return venueRepository.findAll();
+    public List<VenueDTO> getVenue() {
+        return venueRepository.findAll().stream().map(venue -> new VenueDTO(
+                venue.getLocationType(),
+                venue.getCapacity()
+        )).collect(Collectors.toList());
     }
 
     @Override

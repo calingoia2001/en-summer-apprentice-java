@@ -19,7 +19,7 @@ public class TicketCategoryController {
     }
 
     @PostMapping
-    public void createCustomer(@RequestBody TicketCategory ticketCategory) {
+    public void createTicketCategory(@RequestBody TicketCategory ticketCategory) {
         ticketCategoryService.createTicketCategory(ticketCategory);
     }
 }
