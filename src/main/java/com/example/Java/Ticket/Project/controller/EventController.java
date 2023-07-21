@@ -22,4 +22,6 @@ public class EventController {
     public void createEvent(@RequestBody Event event) {
         eventService.createEvent(event);
     }
+
+    //test
 }
