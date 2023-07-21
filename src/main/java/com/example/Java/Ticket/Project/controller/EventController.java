@@ -1,6 +1,7 @@
 package com.example.Java.Ticket.Project.controller;
 
 import com.example.Java.Ticket.Project.entities.Event;
+import com.example.Java.Ticket.Project.entities.dtos.EventDTO;
 import com.example.Java.Ticket.Project.service.EventService;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
@@ -14,7 +15,7 @@ public class EventController {
     }
 
     @GetMapping()
-    public List<Event> getEvent() {
+    public List<EventDTO> getEvent() {
         return eventService.getEvent();
     }
 

@@ -19,6 +19,7 @@ public class VenueService implements iVenueService {
     @Override
     public List<VenueDTO> getVenue() {
         return venueRepository.findAll().stream().map(venue -> new VenueDTO(
+                venue.getLocationName(),
                 venue.getLocationType(),
                 venue.getCapacity()
         )).collect(Collectors.toList());

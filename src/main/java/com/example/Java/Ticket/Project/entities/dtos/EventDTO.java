@@ -10,5 +10,5 @@ public record EventDTO(Long eventID,
                        String description,
                        String name,
                        Date startDate,
-                       Date endDate,
-                       List<TicketCategoryDTO> ticketCategories) implements Serializable {}
+                       Date endDate
+                       ) implements Serializable {}
