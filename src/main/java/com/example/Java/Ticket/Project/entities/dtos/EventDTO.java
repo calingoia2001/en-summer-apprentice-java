@@ -5,7 +5,7 @@ import java.time.LocalDate;
 import java.util.List;
 
 public record EventDTO(Long id,
-                       Long venue,
+                       VenueDTO venue,
                        String type,
                        String description,
                        String name,
