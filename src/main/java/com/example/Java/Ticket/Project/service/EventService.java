@@ -1,8 +1,10 @@
 package com.example.Java.Ticket.Project.service;
 
 import com.example.Java.Ticket.Project.entities.Event;
+import com.example.Java.Ticket.Project.entities.TicketCategory;
 import com.example.Java.Ticket.Project.entities.Venue;
 import com.example.Java.Ticket.Project.entities.dtos.EventDTO;
+import com.example.Java.Ticket.Project.entities.dtos.TicketCategoryDTO;
 import com.example.Java.Ticket.Project.entities.dtos.VenueDTO;
 import com.example.Java.Ticket.Project.repository.EventRepository;
 import org.springframework.stereotype.Service;
@@ -24,6 +26,7 @@ public class EventService implements iEventService {
                 event.getEventName(),
                 event.getStartDate(),
                 event.getEndDate()
+                //convertToTicketCategoryDTOList()
         )).collect(Collectors.toList());
     }
 
@@ -32,15 +35,26 @@ public class EventService implements iEventService {
             return null;
         }
         return new VenueDTO(
+                venue.getVenueID(),
                 venue.getLocationName(),
                 venue.getLocationType(),
                 venue.getCapacity()
         );
     }
 
+    /*
+    private List<TicketCategoryDTO> convertToTicketCategoryDTOList(List<TicketCategory> ticketCategories) {
+        return ticketCategories.stream()
+                .map(ticketCategory -> new TicketCategoryDTO(
+                        ticketCategory.getTicketCategoryID(),
+                        ticketCategory.getDescription(),
+                        ticketCategory.getPrice()
+                ))
+                .collect(Collectors.toList());
+    }*/
+
     @Override
     public void createEvent(Event event) {
         eventRepository.save(event);
     }
-
 }

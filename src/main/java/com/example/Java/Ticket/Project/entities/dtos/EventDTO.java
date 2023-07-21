@@ -1,5 +1,7 @@
 package com.example.Java.Ticket.Project.entities.dtos;
 
+import com.example.Java.Ticket.Project.entities.Event;
+
 import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
@@ -11,4 +13,4 @@ public record EventDTO(Long eventID,
                        String name,
                        Date startDate,
                        Date endDate
-                       ) implements Serializable {}
+                       /*List<TicketCategoryDTO> ticketCategories*/) implements Serializable {}
