@@ -15,8 +15,10 @@ public class OrderService implements IOrderService {
     }
 
     @Override
-    public List<OrderDTO> getOrders() {
-        return orderRepository.findAll().stream().map(orders -> new OrderDTO(
+    public List<OrderDTO> getOrders(Long customerID) {
+        return orderRepository.findAll().stream()
+                .filter(order -> order.getCustomer().getCustomerID() == customerID)
+                .map(orders -> new OrderDTO(
             orders.getTicketCategory().getEventID().getEventID(),
             orders.getOrderedAt(),
             orders.getTicketCategory().getTicketCategoryID(),

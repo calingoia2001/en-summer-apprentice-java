@@ -15,8 +15,8 @@ public class OrderController {
     }
 
     @GetMapping
-    public List<OrderDTO> getOrders() {
-        return ordersService.getOrders();
+    public List<OrderDTO> getOrders(@RequestParam Long customerID) {
+        return ordersService.getOrders(customerID);
     }
 
     @PostMapping
