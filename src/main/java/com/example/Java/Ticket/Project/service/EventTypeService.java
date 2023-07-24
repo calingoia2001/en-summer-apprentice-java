@@ -3,7 +3,6 @@ package com.example.Java.Ticket.Project.service;
 import com.example.Java.Ticket.Project.entities.EventType;
 import com.example.Java.Ticket.Project.repository.EventTypeRepository;
 import org.springframework.stereotype.Service;
-
 import java.util.List;
 
 @Service
