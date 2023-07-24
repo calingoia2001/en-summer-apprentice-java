@@ -15,8 +15,8 @@ public class EventController {
     }
 
     @GetMapping()
-    public List<EventDTO> getEvents() {
-        return eventService.getEvents();
+    public List<EventDTO> getEvents(@RequestParam Long venueID, @RequestParam String eventType) {
+        return eventService.getEvents(venueID, eventType);
     }
 
     @PostMapping

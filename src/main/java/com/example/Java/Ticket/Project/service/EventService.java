@@ -9,6 +9,7 @@ import com.example.Java.Ticket.Project.entities.dtos.VenueDTO;
 import com.example.Java.Ticket.Project.repository.EventRepository;
 import org.springframework.stereotype.Service;
 import java.util.List;
+import java.util.Objects;
 import java.util.stream.Collectors;
 
 @Service
@@ -17,8 +18,10 @@ public class EventService implements IEventService {
     public EventService(EventRepository eventRepository) { this.eventRepository = eventRepository; }
 
     @Override
-    public List<EventDTO> getEvents() {
-        return eventRepository.findAll().stream().map(event -> new EventDTO(
+    public List<EventDTO> getEvents(Long venueID, String eventTypeName) {
+        return eventRepository.findAll().stream()
+                .filter(event -> Objects.equals(event.getVenue().getVenueID(), venueID) && Objects.equals(event.getEventType().getEventTypeName(), eventTypeName))
+                .map(event -> new EventDTO(
                 event.getEventID(),
                 convertToVenueDTO(event.getVenue()),
                 event.getEventType().getEventTypeName(),
