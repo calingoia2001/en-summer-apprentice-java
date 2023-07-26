@@ -7,7 +7,6 @@ import com.example.Java.Ticket.Project.service.OrderService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.List;
 import java.util.Optional;
 
@@ -24,24 +23,19 @@ public class OrderController {
         return ordersService.getOrders(customerID);
     }
 
-    /*@PostMapping
-    public void createOrder(@RequestBody Order order) {
-       ordersService.createOrders(order);
-    }*/
-
     @PostMapping
     public ResponseEntity<?> createOrder(@RequestBody OrderDTOpost orderDTOpost) {
-        //long customerID = orderDTOpost.customerID();
         long eventID = orderDTOpost.eventID();
         long ticketCategoryID = orderDTOpost.ticketCategoryID();
         int numberOfTickets = orderDTOpost.numberOfTickets();
 
-        Optional<Order> orderOptional = ordersService.createOrder(/*customerID, */eventID, ticketCategoryID, numberOfTickets);
+        Optional<Order> orderOptional = ordersService.createOrder(eventID, ticketCategoryID, numberOfTickets);
 
         if (orderOptional.isEmpty()) {
-            Error error = new Error("Order could not be added, customer or ticket category not found");
+            Error error = new Error("ID not found");
             return new ResponseEntity<>(error, HttpStatus.NOT_FOUND);
-        } else {
+        }
+        else {
             Order order = orderOptional.get();
             OrderDTO orderDTO = new OrderDTO(
                     order.getTicketCategory().getEventID().getEventID(),
@@ -53,5 +47,4 @@ public class OrderController {
             return new ResponseEntity<>(orderDTO, HttpStatus.OK);
         }
     }
-
 }

@@ -10,7 +10,6 @@ import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import java.io.Serializable;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.util.Objects;
 
 @Entity
@@ -49,6 +48,7 @@ public class Order implements Serializable {
         this.totalPrice = totalPrice;
     }
 
+    // constructor for post order
     public Order(TicketCategory ticketCategory, Customer customer, int numberOfTickets, LocalDate orderedAt, int totalPrice) {
         this.ticketCategory = ticketCategory;
         this.customer = customer;

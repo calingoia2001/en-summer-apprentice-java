@@ -8,7 +8,6 @@ import java.util.List;
 @Service
 public class EventTypeService implements IEventTypeService {
     private final EventTypeRepository eventTypeRepository;
-
     public EventTypeService(EventTypeRepository eventTypeRepository) {
         this.eventTypeRepository = eventTypeRepository;
     }

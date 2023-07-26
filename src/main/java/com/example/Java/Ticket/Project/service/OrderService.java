@@ -10,7 +10,6 @@ import com.example.Java.Ticket.Project.repository.TicketCategoryRepository;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
@@ -41,13 +40,8 @@ public class OrderService implements IOrderService {
         )).collect(Collectors.toList());
     }
 
-    //@Override
-    //public void createOrders(Order order) {
-        //orderRepository.save(order);
-    //}
-
     @Override
-    public Optional<Order> createOrder(/*long customerID, */long eventID, long ticketCategoryID, int numberOfTickets) {
+    public Optional<Order> createOrder(long eventID, long ticketCategoryID, int numberOfTickets) {
         Customer customer = customerRepository.findCustomerByCustomerID(2);
         TicketCategory ticketCategory = ticketCategoryRepository.findTicketCategoryByTicketCategoryID(ticketCategoryID);
 
@@ -55,7 +49,11 @@ public class OrderService implements IOrderService {
             return Optional.empty();
         }
 
-        Order order = new Order(ticketCategory, customer, numberOfTickets, LocalDate.now(), numberOfTickets * ticketCategory.getPrice());
+        Order order = new Order(ticketCategory,
+                                customer,
+                                numberOfTickets,
+                                LocalDate.now(),
+                        numberOfTickets * ticketCategory.getPrice());
 
         return Optional.of(orderRepository.save(order));
     }

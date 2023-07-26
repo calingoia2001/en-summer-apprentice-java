@@ -10,7 +10,6 @@ import java.util.stream.Collectors;
 @Service
 public class VenueService implements IVenueService {
     private final VenueRepository venueRepository;
-
     public VenueService(VenueRepository venueRepository) {
         this.venueRepository = venueRepository;
     }
