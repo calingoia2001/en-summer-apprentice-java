@@ -9,5 +9,5 @@ import java.util.Optional;
 public interface IOrderService {
     List<OrderDTO> getOrders(Long customerID);
     //void createOrders(Order order);
-    Optional<Order> createOrder(long customerID, long eventID, long ticketCategoryID, int numberOfTickets);
+    Optional<Order> createOrder(/*long customerID, */long eventID, long ticketCategoryID, int numberOfTickets);
 }

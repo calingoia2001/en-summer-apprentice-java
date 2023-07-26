@@ -31,12 +31,12 @@ public class OrderController {
 
     @PostMapping
     public ResponseEntity<?> createOrder(@RequestBody OrderDTOpost orderDTOpost) {
-        long customerID = orderDTOpost.customerID();
+        //long customerID = orderDTOpost.customerID();
         long eventID = orderDTOpost.eventID();
         long ticketCategoryID = orderDTOpost.ticketCategoryID();
         int numberOfTickets = orderDTOpost.numberOfTickets();
 
-        Optional<Order> orderOptional = ordersService.createOrder(customerID, eventID, ticketCategoryID, numberOfTickets);
+        Optional<Order> orderOptional = ordersService.createOrder(/*customerID, */eventID, ticketCategoryID, numberOfTickets);
 
         if (orderOptional.isEmpty()) {
             Error error = new Error("Order could not be added, customer or ticket category not found");

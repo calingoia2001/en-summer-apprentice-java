@@ -47,15 +47,15 @@ public class OrderService implements IOrderService {
     //}
 
     @Override
-    public Optional<Order> createOrder(long customerID, long eventID, long ticketCategoryID, int numberOfTickets) {
-        Customer customer = customerRepository.findCustomerByCustomerID(customerID);
+    public Optional<Order> createOrder(/*long customerID, */long eventID, long ticketCategoryID, int numberOfTickets) {
+        Customer customer = customerRepository.findCustomerByCustomerID(2);
         TicketCategory ticketCategory = ticketCategoryRepository.findTicketCategoryByTicketCategoryID(ticketCategoryID);
 
         if (customer == null || ticketCategory == null) {
             return Optional.empty();
         }
 
-        Order order = new Order(ticketCategory, customer, numberOfTickets, LocalDate.now(), 1500);
+        Order order = new Order(ticketCategory, customer, numberOfTickets, LocalDate.now(), numberOfTickets * ticketCategory.getPrice());
 
         return Optional.of(orderRepository.save(order));
     }
