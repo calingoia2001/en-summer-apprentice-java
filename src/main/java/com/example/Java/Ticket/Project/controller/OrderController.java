@@ -12,6 +12,7 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping(path = "/api/v1/orders")
+@CrossOrigin()
 public class OrderController {
     private final OrderService ordersService;
     public OrderController(OrderService ordersService) {
@@ -38,9 +39,11 @@ public class OrderController {
         else {
             Order order = orderOptional.get();
             OrderDTO orderDTO = new OrderDTO(
+                    order.getOrderID(),
                     order.getTicketCategory().getEventID().getEventID(),
                     order.getOrderedAt(),
                     order.getTicketCategory().getTicketCategoryID(),
+                    order.getTicketCategory().getDescription(),
                     order.getNumberOfTickets(),
                     order.getTotalPrice()
             );

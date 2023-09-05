@@ -32,9 +32,11 @@ public class OrderService implements IOrderService {
         return orderRepository.findAll().stream()
                 .filter(order -> Objects.equals(order.getCustomer().getCustomerID(), customerID))
                 .map(order -> new OrderDTO(
+            order.getOrderID(),
             order.getTicketCategory().getEventID().getEventID(),
             order.getOrderedAt(),
             order.getTicketCategory().getTicketCategoryID(),
+            order.getTicketCategory().getDescription(),
             order.getNumberOfTickets(),
             order.getTotalPrice()
         )).collect(Collectors.toList());

@@ -7,6 +7,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping(path = "/api/v1/eventTypes")
+@CrossOrigin()
 public class EventTypeController {
     private final EventTypeService eventTypeService;
 

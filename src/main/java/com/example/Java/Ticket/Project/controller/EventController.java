@@ -8,6 +8,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping(path = "/api/v1/events")
+@CrossOrigin()
 public class EventController {
     private final EventService eventService;
     public EventController(EventService eventService) {
@@ -15,8 +16,13 @@ public class EventController {
     }
 
     @GetMapping()
-    public List<EventDTO> getEvents(@RequestParam Long venueID, @RequestParam String eventType) {
-        return eventService.getEvents(venueID, eventType);
+    public List<EventDTO> getEvents() {
+        return eventService.getEvents();
+    }
+
+    @GetMapping("/filterBy")
+    public List<EventDTO> getEventsWithParams(@RequestParam Long venueID, @RequestParam String eventType) {
+        return eventService.getEventsWithParams(venueID, eventType);
     }
 
     @PostMapping

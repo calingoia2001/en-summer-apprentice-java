@@ -8,6 +8,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping(path = "/api/v1/venues")
+@CrossOrigin()
 public class VenueController {
     private final VenueService venueService;
     public VenueController(VenueService venueService) {

@@ -7,6 +7,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping(path = "/api/v1/ticketcategories")
+@CrossOrigin()
 public class TicketCategoryController {
     private final TicketCategoryService ticketCategoryService;
     public TicketCategoryController(TicketCategoryService ticketCategoryService) {

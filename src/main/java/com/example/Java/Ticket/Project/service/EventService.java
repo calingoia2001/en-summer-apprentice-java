@@ -18,9 +18,9 @@ public class EventService implements IEventService {
     public EventService(EventRepository eventRepository) { this.eventRepository = eventRepository; }
 
     @Override
-    public List<EventDTO> getEvents(Long venueID, String eventTypeName) {
+    public List<EventDTO> getEvents(/*Long venueID, String eventTypeName*/) {
         return eventRepository.findAll().stream()
-                .filter(event -> Objects.equals(event.getVenue().getVenueID(), venueID) && Objects.equals(event.getEventType().getEventTypeName(), eventTypeName))
+                //.filter(event -> Objects.equals(event.getVenue().getVenueID(), venueID) && Objects.equals(event.getEventType().getEventTypeName(), eventTypeName))
                 .map(event -> new EventDTO(
                 event.getEventID(),
                 convertToVenueDTO(event.getVenue()),
@@ -31,6 +31,22 @@ public class EventService implements IEventService {
                 event.getEndDate(),
                 convertToTicketCategoryDTOList(event.getTicketCategories())
         )).collect(Collectors.toList());
+    }
+
+    @Override
+    public List<EventDTO> getEventsWithParams(Long venueID, String eventTypeName) {
+        return eventRepository.findAll().stream()
+                .filter(event -> Objects.equals(event.getVenue().getVenueID(), venueID) && Objects.equals(event.getEventType().getEventTypeName(), eventTypeName))
+                .map(event -> new EventDTO(
+                        event.getEventID(),
+                        convertToVenueDTO(event.getVenue()),
+                        event.getEventType().getEventTypeName(),
+                        event.getEventDescription(),
+                        event.getEventName(),
+                        event.getStartDate(),
+                        event.getEndDate(),
+                        convertToTicketCategoryDTOList(event.getTicketCategories())
+                )).collect(Collectors.toList());
     }
 
     private VenueDTO convertToVenueDTO(Venue venue) {
@@ -53,6 +69,11 @@ public class EventService implements IEventService {
                         ticketCategory.getPrice()
                 ))
                 .collect(Collectors.toList());
+    }
+
+    @Override
+    public List<Event> getAllEvent() {
+        return eventRepository.findAll();
     }
 
     @Override
